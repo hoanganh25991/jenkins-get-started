@@ -1,6 +1,8 @@
 pipeline {
     agent { docker 'node:6.12' }
-    environment {}
+    environment {
+        HOME='.'
+    }
     stages {
         stage('Test') {
             steps {
