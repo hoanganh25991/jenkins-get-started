@@ -1,0 +1,23 @@
+{
+  "name": "jenkins-get-started",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lambda.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "serverless deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoanganh25991/jenkins-get-started.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hoanganh25991/jenkins-get-started/issues"
+  },
+  "homepage": "https://github.com/hoanganh25991/jenkins-get-started#readme",
+  "dependencies": {
+    "serverless": "^1.26.0"
+  }
+}
