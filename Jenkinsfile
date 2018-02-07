@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        docker { image 'node:6.12' }
-    }
+    agent { docker 'node:6.3' }
     stages {
         stage('Test') {
             steps {
@@ -14,7 +12,8 @@ pipeline {
     }
     post {
         always {
-            echo 'This will always run'
+            echo 'One way or another, I have finished'
+            deleteDir() /* clean up our workspace */
         }
         success {
             echo 'This will run only if successful'
