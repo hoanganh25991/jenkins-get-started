@@ -37,7 +37,7 @@ pipeline {
 
                     # Run it
                     npm install
-                    #npm run deploy
+                    npm run deploy
                 '''
             }
         }
