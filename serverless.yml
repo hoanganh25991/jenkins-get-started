@@ -1,0 +1,21 @@
+service: jenkins-pipeline
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  timeout: 10
+  memorySize: 128
+  stage: dev
+  region: us-east-1
+
+functions:
+  accountManagement:
+    handler: lambda.handler
+    events:
+      - http: ANY {proxy+}
+      - http: ANY /
+
+package:
+  exclude:
+    - .idea/**
+    - tmp/**

@@ -1,9 +1,14 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'node:6.12-alpine' }
+    }
     stages {
         stage('Test') {
             steps {
-                sh 'echo "Fail!"; exit 1'
+                sh '''
+                	npm install -g serverless
+                	serverless --version
+                '''
             }
         }
     }
@@ -14,9 +19,11 @@ pipeline {
         success {
             echo 'This will run only if successful'
         }
-        failure {
-            echo 'This will run only if failed'
-        }
+	    failure {
+	        mail to: 'lehoanganh25991@gmail.com',
+	             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+	             body: "Something is wrong with ${env.BUILD_URL}"
+	    }
         unstable {
             echo 'This will run only if the run was marked as unstable'
         }
