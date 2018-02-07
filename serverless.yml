@@ -9,7 +9,7 @@ provider:
   region: us-east-1
 
 functions:
-  accountManagement:
+  echoBack:
     handler: lambda.handler
     events:
       - http: ANY {proxy+}
