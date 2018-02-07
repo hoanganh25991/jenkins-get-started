@@ -20,18 +20,9 @@ pipeline {
         }
     }
     post {
-        always {
-            echo 'One way or another, I have finished'
-            deleteDir() /* clean up our workspace */
-        }
         success {
             echo 'This will run only if successful'
         }
-	    failure {
-	        mail to: 'lehoanganh25991@gmail.com',
-	             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-	             body: "Something is wrong with ${env.BUILD_URL}"
-	    }
         unstable {
             echo 'This will run only if the run was marked as unstable'
         }
