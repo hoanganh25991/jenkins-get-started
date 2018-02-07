@@ -1,8 +1,8 @@
 pipeline {
     agent { docker 'node:6.12' }
     environment {
-        npm_config_cache = 'npm-cache'
-        HOME = '.'
+        npm_config_cache=npm-cache
+        HOME=.
     }
     stages {
         stage('Test') {
@@ -15,9 +15,15 @@ pipeline {
                 	# sudo npm install -g serverless
                 	# sudo ERR
                 	# sudo: not found
+                	mkdir -p node_dir
+                    export NVM_DIR=$(pwd)/node_dir
+                    curl https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
+                    source $(pwd)/node_dir/nvm.sh
+
+                    nvm install 6.10
+                    nvm use 6.10
 
                 	npm install -g serverless
-
                 	serverless --version
                 '''
             }
