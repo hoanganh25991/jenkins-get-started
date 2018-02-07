@@ -4,7 +4,9 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
-                    whoami
+                    # whoami
+                    # whoami ERR
+                    # whoami: cannot find name for user ID 112
                 	sudo npm install -g serverless
                 	serverless --version
                 '''
