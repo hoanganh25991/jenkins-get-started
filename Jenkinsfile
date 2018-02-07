@@ -1,5 +1,9 @@
 pipeline {
     agent { docker 'node:6.12' }
+    environment {
+        npm_config_cache = 'npm-cache'
+        HOME = '.'
+    }
     stages {
         stage('Test') {
             steps {
@@ -7,7 +11,13 @@ pipeline {
                     # whoami
                     # whoami ERR
                     # whoami: cannot find name for user ID 112
-                	sudo npm install -g serverless
+
+                	# sudo npm install -g serverless
+                	# sudo ERR
+                	# sudo: not found
+
+                	npm install -g serverless
+
                 	serverless --version
                 '''
             }
