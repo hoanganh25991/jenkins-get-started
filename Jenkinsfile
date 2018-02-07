@@ -1,4 +1,14 @@
 pipeline {
+    # OK I GOT IT
+    # MY JENKINS RUN IN HOST ENV >>> CANT START DOCKER IN DOCKER
+    # agent here MUST ANY
+    # agent { docker 'node:6.12'} >>> ERR
+    # ========================
+    # Do i have node?
+    # Yes, 'node' of HOST ENV
+    # ========================
+    # Which aws credential used?
+    # Find in ~/.aws of HOST ENV
     agent any
     stages {
         stage('Test') {
@@ -11,10 +21,18 @@ pipeline {
                     # sudo npm install -g serverless
                     # sudo ERR
                     # sudo: not found
-                    #npm install -g serverless
-                    #serverless --version
+                    # npm install -g serverless
+                    # serverless --version
+
+                    # Check ENV version of node/npm/nvm, current user
+                    whoami
+                    node -v
+                    npm -v
+                    nvm -v
+
+                    # Run it
                     npm install
-                    npm run deploy
+                    #npm run deploy
                 '''
             }
         }
@@ -22,6 +40,9 @@ pipeline {
     post {
         success {
             echo 'This will run only if successful'
+        }
+        failure {
+            echo 'Failed.'
         }
         unstable {
             echo 'This will run only if the run was marked as unstable'
