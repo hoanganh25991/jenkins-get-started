@@ -1,36 +1,38 @@
 pipeline {
-    # OK I GOT IT
-    # MY JENKINS RUN IN HOST ENV >>> CANT START DOCKER IN DOCKER
-    # agent here MUST ANY
-    # agent { docker 'node:6.12'} >>> ERR
-    # ========================
-    # Do i have node?
-    # Yes, 'node' of HOST ENV
-    # ========================
-    # Which aws credential used?
-    # Find in ~/.aws of HOST ENV
+    /*
+    * OK I GOT IT: MY JENKINS RUN IN HOST ENV >>> CANT START DOCKER IN DOCKER
+    * Jenkins can run under 'docker' in HOST, or run directly inside HOST
+    * agent here MUST ANY, not
+    * agent { docker 'node:6.12'} >>> ERR
+    * ========================
+    * Do i have node?
+    * Yes, 'node' of HOST ENV
+    * ========================
+    * Which aws credential used?
+    * Find in ~/.aws of HOST ENV
+    */
     agent any
     stages {
         stage('Test') {
             steps {
                 sh '''
-                    # whoami
-                    # whoami ERR
-                    # whoami: cannot find name for user ID 112
+                    * whoami
+                    * whoami ERR
+                    * whoami: cannot find name for user ID 112
 
-                    # sudo npm install -g serverless
-                    # sudo ERR
-                    # sudo: not found
-                    # npm install -g serverless
-                    # serverless --version
+                    * sudo npm install -g serverless
+                    * sudo ERR
+                    * sudo: not found
+                    * npm install -g serverless
+                    * serverless --version
 
-                    # Check ENV version of node/npm/nvm, current user
+                    * Check ENV version of node/npm/nvm, current user
                     whoami
                     node -v
                     npm -v
                     nvm -v
 
-                    # Run it
+                    * Run it
                     npm install
                     #npm run deploy
                 '''
