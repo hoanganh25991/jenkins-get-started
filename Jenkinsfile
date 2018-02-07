@@ -1,13 +1,7 @@
 pipeline {
-    agent any
+    agent { docker 'node:6.12' }
     stages {
         stage('Test') {
-            agent {
-                docker {
-                    image 'node:6.12'
-                    args '-u root:root'
-                }
-            }
             steps {
                 sh '''
                     # whoami
