@@ -4,6 +4,8 @@ pipeline {
     * Jenkins can run under 'docker' in HOST, or run directly inside HOST
     * agent here MUST ANY, not
     * agent { docker 'node:6.12'} >>> ERR
+    * OK OK OK, i can get it (docker)
+    * By install 'Docker Plugin'
     * ========================
     * Do i have node?
     * Yes, 'node' of HOST ENV
@@ -30,7 +32,6 @@ pipeline {
                     whoami
                     node -v
                     npm -v
-                    nvm -v
 
                     # Run it
                     npm install
