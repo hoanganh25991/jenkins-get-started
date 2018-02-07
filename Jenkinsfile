@@ -16,23 +16,23 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
-                    * whoami
-                    * whoami ERR
-                    * whoami: cannot find name for user ID 112
+                    # whoami
+                    # whoami ERR
+                    # whoami: cannot find name for user ID 112
 
-                    * sudo npm install -g serverless
-                    * sudo ERR
-                    * sudo: not found
-                    * npm install -g serverless
-                    * serverless --version
+                    # sudo npm install -g serverless
+                    # sudo ERR
+                    # sudo: not found
+                    # npm install -g serverless
+                    # serverless --version
 
-                    * Check ENV version of node/npm/nvm, current user
+                    # Check ENV version of node/npm/nvm, current user
                     whoami
                     node -v
                     npm -v
                     nvm -v
 
-                    * Run it
+                    # Run it
                     npm install
                     #npm run deploy
                 '''
