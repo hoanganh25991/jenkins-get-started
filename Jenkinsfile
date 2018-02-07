@@ -1,11 +1,14 @@
 pipeline {
     agent any
-    environment {
-        HOME='.'
-    }
     stages {
         stage('Test') {
-            docker.image('node:6.12').withRun('-u root'){
+            agent {
+                docker {
+                    image 'node:6.12'
+                    args '-u root:root'
+                }
+            }
+            steps {
                 sh '''
                     # whoami
                     # whoami ERR
@@ -14,6 +17,8 @@ pipeline {
                     # sudo npm install -g serverless
                     # sudo ERR
                     # sudo: not found
+                    #npm install -g serverless
+                    #serverless --version
                     npm install
                     npm run deploy
                 '''
