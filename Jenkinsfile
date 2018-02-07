@@ -29,6 +29,8 @@ pipeline {
                     # serverless --version
 
                     # Check ENV version of node/npm/nvm, current user
+                    pwd
+                    echo ~jenkins
                     whoami
                     node -v
                     npm -v
