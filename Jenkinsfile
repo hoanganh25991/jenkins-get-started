@@ -4,7 +4,8 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
-                	npm install -g serverless
+                    whoami
+                	sudo npm install -g serverless
                 	serverless --version
                 '''
             }
